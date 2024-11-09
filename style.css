@@ -19,7 +19,7 @@ body {
   bottom: -50px;
   right: -50px;
   z-index: -1;
-  background: url(./images/casablanca.jpg) no-repeat center;
+  background: url(./images/newyork.jpg) no-repeat center;
   background-size: cover;
   height: 100%;
   filter: blur(30px);
@@ -38,12 +38,15 @@ body {
 }
 
 #card-bg {
-  background: url(./images/casablanca.jpg) no-repeat center;
+  background: url(./images/newyork.jpg) no-repeat center;
   background-size: cover;
   flex: 1;
   border-radius: 10px;
   padding: 20px 20px 0 20px;
   position: relative;
+  display: flex;
+  align-items:flex-start;
+  justify-content: space-between;
 }
 
 #cities {
@@ -57,6 +60,7 @@ body {
   appearance: none;
   cursor: pointer;
   outline: none;
+  text-transform: capitalize;
 }
 
 #cities option{
@@ -70,6 +74,41 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
+#infos {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: contrast(10px);
+
+  #info1 {
+    display: flex;
+    align-items: center;
+
+    #time {
+      font-size: 3rem;
+    }
+
+    #location {
+      display: flex;
+      flex-direction: column;
+      font-size: 11px;
+      margin-left: 5px;
+
+      #city {
+        margin-right: 5px;
+        text-transform: capitalize;
+      }
+    }
+
+    #date {
+      margin-top: -9px
+    }
+
+  }
+
+}
+
 
 .temperature {
   display: flex;
@@ -127,10 +166,3 @@ body {
   margin-left: 13px;
 }
 
-#position {
-  position: absolute;
-  left: 87%;
-  top: 5%;
-  text-align: center;
-  color: white;
-}

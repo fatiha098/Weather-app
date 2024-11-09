@@ -1,5 +1,5 @@
 $('#cities').on('change', function(e){
-
+  
   const value = e.target.value;
 
   const coords = value.split(',');
@@ -45,7 +45,24 @@ $('#cities').on('change', function(e){
     $('#temp').text(data.current.temperature_2m) ;
     $('#deg').html("&deg;").css('margin-left', '4px') ;
     
+    // time city date
+    $('#time').text(time[1]) ;
 
+    let date = new Date(time[0]);
+    let formateDate = date.toLocaleDateString('en-US', 
+    {
+      weekday: 'long',
+      month: 'long',
+      day: '2-digit'
+    });
+    $('#dateInfo').text(formateDate) ;
+    $('#city').text(city) ;
+
+    if(hour >= 0 &&  hour <= 12 ){
+      $('#MN').text('AM') ;
+    }else{
+      $('#MN').text('PM') ;
+    }
 
 
     $.each(week_temp , function(index, temp){
@@ -53,15 +70,12 @@ $('#cities').on('change', function(e){
       $(`#day${index} .temper`).html(temp + '<span>&deg;</span>');
 
       if(data.daily.rain_sum[index] != 0){
-        console.log(index);
         $(`#stat${index}`).attr("src", "./icons/rain.svg");
   
       }else if(temp >= 26 ){
-        console.log('sun')
         $(`#stat${index}`).attr("src", "./icons/sun.svg");
       }
       else{
-          console.log('cloud')
         $(`#stat${index}`).attr("src", "./icons/cloudy.svg");
       }
 
